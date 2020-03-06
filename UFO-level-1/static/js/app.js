@@ -5,12 +5,14 @@ var tableData = data;
 function populateTable(filteredTable) {
   // iterate through filtered rows
   var outputTable = document.getElementById("ufo-table");
-
-  //var x = outputTable.rows.length;
-  //if (x > 0) {
-    document.getElementsByTagName("tbody")[0].innerHTML = outputTable.rows[0].innerHTML;
-  //};
-
+  outputTable.getElementsByTagName("tbody")[0].innerHTML = outputTable.rows[0].innerHTML;
+  // var tableLength = outputTable.rows.length;
+  // console.log(tableLength); 
+  // if (tableLength > 1) {
+  //   for(var i = 1; i< tableLength - 1;){
+  //     outputTable.deleteRow(i);
+  //   }
+  // };
 
   filteredTable.forEach(function(sighting) {
     // store table data in temp fields
@@ -24,7 +26,6 @@ function populateTable(filteredTable) {
 
     var newRow = outputTable.insertRow(-1);
     // Insert row and cells for each table item
-    // var row = outputTable.insertRow(0);
     var cell0 = newRow.insertCell(0);
     var cell1 = newRow.insertCell(1);
     var cell2 = newRow.insertCell(2);

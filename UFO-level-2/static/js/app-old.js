@@ -1,5 +1,30 @@
 // from data.js
 var tableData = data;
+var dateValues = [];
+var cityValues = [];
+var stateValues = [];
+var countryValues = [];
+var shapeValues = [];
+
+function getUniqueTableValues(dataTable) {
+  dataTable.forEach(function(sighting) {
+    if (!dateValues.includes(sighting.datetime)){
+      dateValues.push(sighting.datetime);
+    };
+    if (!cityValues.includes(sighting.city)){
+      cityValues.push(sighting.city);
+    };
+    if (!stateValues.includes(sighting.state)){
+      stateValues.push(sighting.state);
+    };
+    if (!countryValues.includes(sighting.country)){
+      countryValues.push(sighting.country);
+    };
+    if (!shapeValues.includes(sighting.shape)){
+      shapeValues.push(sighting.shape);
+    };
+  });
+}
 
 // create table for display
 function populateTable(filteredTable) {
@@ -45,6 +70,14 @@ function populateTable(filteredTable) {
 }
 
 var filterButton = d3.select("#filter-btn");
+getUniqueTableValues(tableData);
+// console.log(dateValues);
+// console.log(cityValues);
+// console.log(stateValues);
+// console.log(countryValues);
+// console.log(shapeValues);
+
+var selectCity = document.getElementById("selectCity");
 
 // on click of filter table button call filter function
 filterButton.on("click", function() {

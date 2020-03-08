@@ -139,29 +139,24 @@ filterButton.on("click", function() {
 
   console.log(ufo_date, ufo_city, ufo_state, ufo_country, ufo_shape);
 
-  // create filter for table
-  var ufo_array = []
-  var ufo_filter = "";     
+  var filteredTable = tableData;
+
+  // filter table for each variable selected
   if (ufo_date != "date") {
-    ufo_array.push(`sighting.datetime == ${ufo_date}`);
+    filteredTable = filteredTable.filter(function(sighting) { return sighting.datetime == ufo_date});
   };
   if (ufo_city != "city") {
-    ufo_array.push(`sighting.city == ${ufo_city}`);
+    filteredTable = filteredTable.filter(function(sighting) { return sighting.city == ufo_city});
   };
   if (ufo_state != "state") {
-    ufo_array.push(`sighting.state == ${ufo_state}`);
+    filteredTable = filteredTable.filter(function(sighting) { return sighting.state == ufo_state});
   };
   if (ufo_country != "country") {
-    ufo_array.push(`sighting.country == ${ufo_country}`);
+    filteredTable = filteredTable.filter(function(sighting) { return sighting.country == ufo_country});
   };
   if (ufo_shape != "shape") {
-    ufo_array.push(`sighting.shape == ${ufo_shape}`);
+    filteredTable = filteredTable.filter(function(sighting) { return sighting.shape == ufo_shape});
   };
-
-  ufo_filter = ufo_array.join(" & ");
-  console.log(ufo_filter);
-
-  var filteredTable = tableData.filter(function(sighting) { return ufo_filter});
 
   populateTable(filteredTable);
 });
